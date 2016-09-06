@@ -25,7 +25,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="SpiralGalaxy"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ShowImage" id="Swq-ch-dkY"/>
+                                            <action selector="showImage:" destination="5So-CS-2nG" eventType="touchUpInside" id="xjb-eM-4I0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6a-AD-Yut">
@@ -33,7 +33,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="Saturn"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ShowImage" id="d3H-bj-DPo"/>
+                                            <action selector="showImage:" destination="5So-CS-2nG" eventType="touchUpInside" id="e9T-kS-0P1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="38h-1h-Iry">
@@ -41,7 +41,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                         <state key="normal" title="ChesapeakeBay"/>
                                         <connections>
-                                            <segue destination="BYZ-38-t0r" kind="showDetail" identifier="ShowImage" id="Za1-sE-wDM"/>
+                                            <action selector="showImage:" destination="5So-CS-2nG" eventType="touchUpInside" id="9Yg-W7-3Rz"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -56,6 +56,9 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Cassini" id="js0-MS-Wme"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="MhT-U1-1Ii" kind="show" identifier="ShowImage" id="bvE-6r-yrA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lcv-3f-KrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -67,7 +70,7 @@
                 <splitViewController id="WeN-zV-zkc" sceneMemberID="viewController">
                     <connections>
                         <segue destination="C9O-bW-HXg" kind="relationship" relationship="masterViewController" id="PNj-sq-2lb"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="detailViewController" id="lgD-gK-YuP"/>
+                        <segue destination="MhT-U1-1Ii" kind="relationship" relationship="detailViewController" id="lgD-gK-YuP"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAh-Is-MKv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,7 +89,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VXu-YC-BRM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VXu-YC-BRM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Ra-ud-K8M">
@@ -104,6 +107,7 @@
                             <constraint firstAttribute="trailing" secondItem="VXu-YC-BRM" secondAttribute="trailing" id="uLe-lH-4YZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="XtC-Up-ZFT"/>
                     <connections>
                         <outlet property="scrollView" destination="VXu-YC-BRM" id="wDh-1Q-XMh"/>
                         <outlet property="spinner" destination="5Ra-ud-K8M" id="0S2-Ac-6UV"/>
@@ -111,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1103" y="-510"/>
+            <point key="canvasLocation" x="1915" y="-510"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JDf-lN-hHV">
@@ -131,8 +135,26 @@
             </objects>
             <point key="canvasLocation" x="291" y="-1294"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ys1-40-SCP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="MhT-U1-1Ii" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XUy-OH-TZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="TeD-78-0Cw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1YN-Ui-jdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1103" y="-481"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Za1-sE-wDM"/>
+        <segue reference="bvE-6r-yrA"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@ class CassiniViewController: UIViewController, UISplitViewControllerDelegate {
     private struct Storyboard{
         static let ShowImageSegue = "ShowImage"
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == Storyboard.ShowImageSegue{
             if let ivc = segue.destinationViewController.contentViewController as? ImageViewController{
@@ -22,6 +23,18 @@ class CassiniViewController: UIViewController, UISplitViewControllerDelegate {
                 ivc.title = imageName
             }
         }
+    }
+    
+    // Reloads an image. It doesn't create a new MVC
+    @IBAction func showImage(sender: UIButton) {
+        if let ivc = splitViewController?.viewControllers.last?.contentViewController as? ImageViewController {
+            let imageName = sender.currentTitle
+            ivc.imageURL = DemoURL.NASAImageNamed(imageName)
+            ivc.title = imageName
+        } else {
+            performSegueWithIdentifier(Storyboard.ShowImageSegue, sender: sender)
+        }
+        
     }
     
     override func viewDidLoad() {
