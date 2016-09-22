@@ -10,7 +10,7 @@ import UIKit
 
 class ImageViewController: UIViewController, UIScrollViewDelegate {
     
-    var imageURL: NSURL?{
+    var imageURL: URL?{
         didSet {
             image = nil
             if view.window != nil { //Tells us if the view is on screen
@@ -19,12 +19,12 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    private func fetchImage(){
+    fileprivate func fetchImage(){
         if let url = imageURL {
             spinner?.startAnimating()
-            dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)){
-                let contentsOfURL = NSData(contentsOfURL: url)
-                dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.global(qos: DispatchQoS.QoSClass.userInitiated).async{
+                let contentsOfURL = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
                     if url == self.imageURL {
                         if let imageData = contentsOfURL{
                             self.image = UIImage(data: imageData)
@@ -50,12 +50,12 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
-    private let imageView = UIImageView()
+    fileprivate let imageView = UIImageView()
     
-    private weak var image: UIImage? {
+    fileprivate weak var image: UIImage? {
         get{
             return imageView.image
         }
@@ -68,7 +68,7 @@ class ImageViewController: UIViewController, UIScrollViewDelegate {
     }
     
     //Small perfromance operations
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if image == nil {
             fetchImage()
